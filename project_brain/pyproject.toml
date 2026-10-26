@@ -1,0 +1,29 @@
+[project]
+name = "project-brain"
+version = "0.1.0"
+description = "Project Brain — AI Operating System for building software, with the VeriFlow verification kernel"
+requires-python = ">=3.11"
+dependencies = [
+    "openai>=1.40.0",
+    "pydantic>=2.7.0",
+    "click>=8.1.0",
+    "rich>=13.7.0",
+    "numpy>=1.26.0",
+]
+
+[project.optional-dependencies]
+faiss = ["faiss-cpu>=1.8.0"]
+dev = ["pytest>=8.0.0"]
+
+[project.scripts]
+brain = "brain.cli:cli"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["brain*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
